@@ -18,7 +18,9 @@ export default function Header() {
   }, [])
 
   return (
-    <header className={`fixed w-full z-10 transition-all duration-300 ${isScrolled ? "bg-black" : "bg-transparent"}`}>
+    <header
+      className={`sticky top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-black" : "bg-transparent"}`}
+    >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="text-3xl font-bold tracking-tighter z-20">
           LLMetric
@@ -94,11 +96,16 @@ export default function Header() {
           </Menu>
         </div>
 
-        <Button asChild variant="outline" className="hidden md:block z-20">
-          <a href="https://huggingface.co/models" target="_blank" rel="noopener noreferrer">
-            Hugging Face
-          </a>
-        </Button>
+        <div className="hidden md:flex items-center gap-2 z-20">
+          <Button asChild variant="secondary">
+            <Link href="/contact">Contact</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <a href="https://huggingface.co/models" target="_blank" rel="noopener noreferrer">
+              Hugging Face
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   )

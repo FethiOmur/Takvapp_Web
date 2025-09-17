@@ -2,8 +2,11 @@
 
 import type React from "react"
 
+import dynamic from "next/dynamic"
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input"
-import { StarBorder } from "@/components/ui/star-border"
+const StarBorder = dynamic(() => import("@/components/ui/star-border").then(m => m.StarBorder), {
+  ssr: false,
+})
 
 export function PlaceholdersAndVanishInputDemo() {
   const placeholders = [
@@ -27,7 +30,7 @@ export function PlaceholdersAndVanishInputDemo() {
     <div className="px-4">
       <StarBorder 
         as="div" 
-        className="w-full md:max-w-2xl mx-auto"
+        className="w-[calc(100%+44px)] -ml-[22px] -mr-[22px] md:max-w-[940px] mx-auto"
         color="white"
       >
         <PlaceholdersAndVanishInput 
@@ -35,7 +38,7 @@ export function PlaceholdersAndVanishInputDemo() {
           onChange={handleChange} 
           onSubmit={onSubmit}
           className="w-full" 
-          inputClassName="border-none shadow-none rounded-2xl"
+          inputClassName="border-none shadow-none rounded-3xl py-12"
         />
       </StarBorder>
     </div>

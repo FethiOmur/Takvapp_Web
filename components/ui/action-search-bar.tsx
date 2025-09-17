@@ -493,11 +493,11 @@ function ActionSearchBar({ actions = allActions }: { actions?: Action[] }) {
                     </form>
                 </StarBorder>
 
-                <div className="w-full">
+                <div className="w-full relative">
                     <AnimatePresence>
                         {isFocused && result && !selectedAction && (
                             <motion.div
-                                className="w-full border rounded-md shadow-sm overflow-hidden border-zinc-800 bg-zinc-900 mt-1 max-h-52 overflow-y-auto"
+                                className="absolute left-0 right-0 top-full mt-1 z-50 w-full border rounded-md shadow-sm overflow-hidden border-zinc-800 bg-zinc-900 max-h-52 overflow-y-auto"
                                 variants={container}
                                 initial="hidden"
                                 animate="show"

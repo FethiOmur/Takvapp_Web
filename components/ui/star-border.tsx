@@ -37,6 +37,7 @@ export function StarBorder<T extends ElementType = "button">({
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
           animationDuration: speed,
         }}
+        suppressHydrationWarning
       />
       <div
         className={cn(
@@ -47,6 +48,7 @@ export function StarBorder<T extends ElementType = "button">({
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
           animationDuration: speed,
         }}
+        suppressHydrationWarning
       />
       <div className={cn(
         "relative z-1 border text-foreground rounded-full",

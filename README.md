@@ -1,5 +1,15 @@
 # LLMetric
 
+## Env Setup
+
+Create a `.env.local` with your Supabase keys (see `lib/supabase/README.md`).
+
+To seed local data:
+
+```bash
+npm run seed:cardstack
+```
+
 LLMetric, farklı Büyük Dil Modellerini (LLM) karşılaştırma ve bilgi sunma amacıyla geliştirilmiş bir web uygulamasıdır.
 
 ## 🚀 Özellikler
@@ -85,6 +95,8 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxxxxxxxxxxxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...
 ```
+
+Daha fazla bilgi ve yerel kurulum için `lib/supabase/setup.md` dokümanını inceleyin.
 
 ## 🧩 Katkıda Bulunma
 

@@ -31,7 +31,8 @@ export async function GET(request: Request) {
     // Limit belirtilmişse popüler modelleri getir
     if (limit) {
       const limitNum = parseInt(limit, 10);
-      const models = await ModelsService.getPopularModels(limitNum);
+      const safeLimit = Number.isFinite(limitNum) && limitNum > 0 ? limitNum : 4;
+      const models = await ModelsService.getPopularModels(safeLimit);
       return NextResponse.json(models);
     }
     

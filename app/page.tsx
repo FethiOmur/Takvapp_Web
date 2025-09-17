@@ -3,10 +3,9 @@ import { lazy, Suspense } from "react"
 import Header from "./components/Header"
 import HeroSection from "./components/HeroSection"
 import Footer from "./components/Footer"
-import InteractiveBackground from "./components/InteractiveBackground"
+import dynamic from "next/dynamic"
 
 // Lazy load edilecek büyük componentler
-const ModelsComparisonSection = lazy(() => import("./components/ModelsComparisonSection"))
 const NewsSection = lazy(() => import("./components/NewsSection"))
 const SubscribeSection = lazy(() => import("./components/SubscribeSection"))
 
@@ -26,16 +25,10 @@ const SectionSkeleton = () => (
 export default function Home() {
   return (
     <div className="min-h-screen text-white relative">
-      <InteractiveBackground />
       <div className="relative z-10">
         <Header />
+        <HeroSection />
         <main className="container mx-auto px-4">
-          <HeroSection />
-          
-          <Suspense fallback={<SectionSkeleton />}>
-            <ModelsComparisonSection />
-          </Suspense>
-          
           <Suspense fallback={<SectionSkeleton />}>
             <NewsSection />
           </Suspense>

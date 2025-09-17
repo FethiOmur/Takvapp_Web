@@ -92,7 +92,7 @@ export default async function NewsDetailPage({ params }: Props) {
             <div className="flex items-center text-zinc-300 gap-6">
               <span className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
-                {formatDate(newsItem.publishDate)}
+                {formatDate(newsItem.publishedAt || new Date())}
               </span>
             </div>
           </div>

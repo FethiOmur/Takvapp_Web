@@ -98,7 +98,7 @@ export function PlaceholdersAndVanishInput({
         onBlur={handleBlur}
         placeholder={isTyping || typedPlaceholder === "" ? typedPlaceholder : placeholders[currentPlaceholder]}
         className={cn(
-            "w-full rounded-full bg-zinc-900/80 px-5 py-3 text-base text-white outline-none transition-all duration-300 placeholder:text-zinc-400",
+            "w-full rounded-full bg-zinc-900/80 px-8 py-12 text-base md:text-lg text-white outline-none transition-all duration-300 placeholder:text-zinc-400",
             "backdrop-blur-sm",
             "focus:shadow-inner focus:shadow-white/5",
           inputClassName,
@@ -106,12 +106,12 @@ export function PlaceholdersAndVanishInput({
       />
         <button
           type="submit"
-          className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-zinc-700 to-zinc-800 p-2 text-white transition-all duration-300 hover:from-zinc-600 hover:to-zinc-700 hover:shadow-[0_0_10px_rgba(255,255,255,0.15)]"
+          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-zinc-700 to-zinc-800 p-3 md:p-3 text-white transition-all duration-300 hover:from-zinc-600 hover:to-zinc-700 hover:shadow-[0_0_10px_rgba(255,255,255,0.15)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

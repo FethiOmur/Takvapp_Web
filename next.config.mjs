@@ -23,35 +23,8 @@ const nextConfig = {
     ],
     unoptimized: false,
   },
-  // Chunk optimization
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: 10,
-            chunks: 'all',
-          },
-          recharts: {
-            test: /[\\/]node_modules[\\/]recharts[\\/]/,
-            name: 'recharts',
-            priority: 30,
-            chunks: 'all',
-          },
-          framerMotion: {
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            name: 'framer-motion',
-            priority: 30,
-            chunks: 'all',
-          }
-        }
-      }
-    }
-    return config
-  }
+  // Webpack varsayılan ayarları kullanılsın
+  webpack: (config) => config
 }
 
 const bundleAnalyzer = withBundleAnalyzer({

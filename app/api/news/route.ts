@@ -31,7 +31,8 @@ export async function GET(request: Request) {
     // Limit belirtilmişse son n haberi getir
     if (limit) {
       const limitNum = parseInt(limit, 10);
-      const news = await NewsService.getLatestNews(limitNum);
+      const safeLimit = Number.isFinite(limitNum) && limitNum > 0 ? limitNum : 4;
+      const news = await NewsService.getLatestNews(safeLimit);
       return NextResponse.json(news);
     }
     
