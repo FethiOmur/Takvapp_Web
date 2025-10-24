@@ -141,18 +141,19 @@ function PrayerStats({
             </span>
             <span className="text-foreground/60 dark:text-white/70">Takvapp</span>
           </div>
-          <div>
-            <p className="text-2xl font-semibold text-foreground dark:text-white">
-              {nextPrayer || "Bir sonraki vakit"}
-            </p>
-            <p className="text-sm text-foreground/60"> 
-              {nextPrayerTime ? `${nextPrayerTime} itibarıyla` : "Vakit hesaplanıyor"}
-            </p>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-white/12 px-4 py-3 text-center text-sm text-foreground/65 dark:border-white/15 dark:bg-white/[0.08] dark:text-white/75">
-            {countdown || "Hazırlanıyoruz"}
-          </div>
-        </div>
+                    <div>
+                      <div className="flex items-baseline gap-4">
+                        <span className="text-5xl font-semibold tracking-tight text-foreground dark:text-white sm:text-6xl">
+                          {countdown || "--:--:--"}
+                        </span>
+                        <span className="text-sm tracking-[0.32em] text-foreground/60">
+                          {nextPrayer || "Vakit"}
+                        </span>
+                      </div>
+                      <p className="text-sm text-foreground/60">
+                        {nextPrayerTime ? `${nextPrayerTime} itibarıyla` : "Vakit hesaplanıyor"}
+                      </p>
+                    </div>        </div>
       </div>
 
       <div className="relative rounded-3xl border border-white/12 bg-white/12 px-6 py-6 backdrop-blur-2xl dark:border-white/10 dark:bg-white/[0.05]">
@@ -228,7 +229,7 @@ const HeroPreview = memo(function HeroPreview() {
                     fill
                     className="object-cover"
                     sizes="320px"
-                    priority={screen.title === "Giriş"}
+                    loading="eager"
                   />
                 </div>
               </Card>
@@ -316,7 +317,7 @@ export function HeroSection({
       const s = Math.floor((diff % (1000 * 60)) / 1000);
 
       setCountdown(
-        [h, m, s].map((value) => value.toString().padStart(2, "0")).join(":"),
+        [h, m].map((value) => value.toString().padStart(2, "0")).join(":"),
       );
     };
 

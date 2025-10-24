@@ -69,11 +69,11 @@ export default function HomePage() {
           nextPrayerTime={nextPrayer.time}
         />
 
-        <div className="relative z-10 -mt-24 sm:-mt-28">
+        <div className="relative z-10 mt-16 sm:mt-10">
           <PrayerTimesCard prayerTimes={mockPrayerTimes} currentPrayer="Dhuhr" />
         </div>
 
-        <div className="relative z-0 mt-16 sm:mt-24 lg:mt-32">
+        <div className="relative z-0 mt-10">
           <AppPreviewSection />
         </div>
 

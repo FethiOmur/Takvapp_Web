@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    loader: 'custom',
+    loaderFile: './src/lib/imageLoader.ts',
     remotePatterns: [
       {
         protocol: "https",
@@ -23,7 +25,7 @@ const nextConfig: NextConfig = {
     ],
   },
   basePath: isProd ? "/Takvapp_Web" : "",
-  assetPrefix: isProd ? "/Takvapp_Web/" : "",
+  assetPrefix: isProd ? "/Takvapp_Web" : "",
 };
 
 export default nextConfig;

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 const tabs = [
   "Ana Sayfa",
   "Namaz Vakitleri",
@@ -45,10 +46,9 @@ const screens = [
   },
 ] as const;
 
-export function AppPreviewSection() {
+export function AppPreviewSection({ className }: { className?: string }) {
   return (
-    <section className="relative py-24 sm:py-28 lg:py-36">
-      <motion.div
+    <section className={cn("relative py-24 sm:py-28 lg:py-36", className)}>      <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
