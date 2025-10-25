@@ -14,22 +14,47 @@ export const useChat = () => {
       content: text,
       timestamp: new Date(),
     };
-    setMessages((prev) => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
 
-    // Simulate a delay for the assistant's response
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/imam-ai', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: text,
+          history: messages,
+        }),
+      });
 
-    const assistantMessage: Message = {
-      id: (Date.now() + 1).toString(),
-      role: 'assistant',
-      content: "This is a dummy response from Imam AI.",
-      timestamp: new Date(),
-      sources: ["Quran 2:255", "Sahih al-Bukhari 5010"],
-    };
-    setMessages((prev) => [...prev, assistantMessage]);
+      if (!response.ok) {
+        throw new Error('Failed to get response from Imam AI');
+      }
 
-    setIsLoading(false);
+      const data: ChatResponse = await response.json();
+
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: data.reply,
+        timestamp: new Date(),
+        sources: data.sources,
+      };
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error(error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "Sorry, I'm having trouble connecting to the Imam AI. Please try again later.",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
-
   return { messages, isLoading, sendMessage };
 };

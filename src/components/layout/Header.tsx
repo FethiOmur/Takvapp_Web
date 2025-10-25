@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 const menuItems = [
   { name: "Ana Sayfa", href: "/" },
   { name: "Namaz Vakitleri", href: "/prayer-times" },
-  { name: "Imam AI", href: "/imam-ai" },
   { name: "Kıble", href: "/qibla" },
   { name: "Kuran", href: "/quran" },
   { name: "Tesbihat", href: "/tasbih" },
@@ -92,13 +91,7 @@ export function Header() {
             >
               <Link href="/prayer-times">Namaz Vakitleri</Link>
             </Button>
-            <Button
-              asChild
-              size="sm"
-              className="rounded-xl px-4 whitespace-nowrap"
-            >
-              <Link href="/imam-ai">Hemen Başla</Link>
-            </Button>
+
             <ThemeToggle className="rounded-full" />
           </div>
         </div>
@@ -140,11 +133,7 @@ export function Header() {
                   Namaz Vakitlerini Gör
                 </Link>
               </Button>
-              <Button asChild size="lg" className="rounded-xl">
-                <Link href="/imam-ai" onClick={() => setMenuState(false)}>
-                  Imam AI ile Sohbet Et
-                </Link>
-              </Button>
+
               <ThemeToggle className="justify-self-end rounded-full" />
             </div>
           </div>

@@ -77,15 +77,7 @@ export function ImamAISection() {
                 ))}
               </div>
 
-              <Link href="/imam-ai">
-                <Button
-                  size="lg"
-                  className="group rounded-full bg-primary px-6 text-base font-semibold text-black shadow-[0_20px_45px_-22px_rgba(34,211,238,0.7)] hover:bg-primary/90"
-                >
-                  Imam AI ile konuş
-                  <ArrowRight className="ml-2 size-5 transition group-hover:translate-x-1" />
-                </Button>
-              </Link>
+
             </div>
 
             <div className="relative ml-auto w-full max-w-[480px] overflow-hidden rounded-[36px] border border-black/5 bg-white/90 p-6 text-left shadow-[0_30px_90px_-50px_rgba(15,23,42,0.25)] backdrop-blur-2xl dark:border-white/10 dark:bg-black/30 dark:shadow-[0_30px_90px_-45px_rgba(0,0,0,0.6)]">
