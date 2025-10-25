@@ -27,6 +27,34 @@ export default function HomePage() {
     setIsMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (prayerData) {
+      const timings = prayerData;
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMinute = now.getMinutes();
+
+      const prayers = [
+        { name: "İmsak", time: timings.Fajr, key: "Fajr" },
+        { name: "Öğle", time: timings.Dhuhr, key: "Dhuhr" },
+        { name: "İkindi", time: timings.Asr, key: "Asr" },
+        { name: "Akşam", time: timings.Maghrib, key: "Maghrib" },
+        { name: "Yatsı", time: timings.Isha, key: "Isha" },
+      ];
+
+      for (const prayer of prayers) {
+        const [hour, minute] = prayer.time.split(":").map(Number);
+        if (
+          hour > currentHour ||
+          (hour === currentHour && minute > currentMinute)
+        ) {
+          setNextPrayer({ name: prayer.name, time: prayer.time });
+          break;
+        }
+      }
+    }
+  }, [prayerData]);
+
   const mockPrayerTimes: PrayerTimes = prayerData || {
     Fajr: "05:30",
     Dhuhr: "12:45",
