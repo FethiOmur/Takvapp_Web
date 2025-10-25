@@ -1,6 +1,6 @@
 import { PrayerTimesResponse, LocationData } from "@/types/prayer";
 
-const ALADHAN_API_BASE = "http://api.aladhan.com/v1";
+const ALADHAN_API_BASE = "https://api.aladhan.com/v1";
 
 export async function getPrayerTimes(
   location: LocationData,

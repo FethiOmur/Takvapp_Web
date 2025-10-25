@@ -18,31 +18,31 @@ const screens = [
     title: "Hoş Geldin Ekranı",
     description:
       "Kullanıcıyı şehir silueti ile karşılayıp Apple, Google veya e-posta ile hızlı giriş seçenekleri sunuyor.",
-    image: "/Takvapp_Web/images/mobile/cami-pro-01.png",
+    image: "/images/mobile/cami-pro-01.png",
   },
   {
     title: "İç Mekân Karşılama",
     description:
       "Kubbe motifleri eşliğinde marka kimliğini güçlendirerek oturum açma adımını tutarlı kılıyor.",
-    image: "/Takvapp_Web/images/mobile/cami-pro-02.png",
+    image: "/images/mobile/cami-pro-02.png",
   },
   {
     title: "Gece Modu",
     description:
       "Koyu temalı giriş ekranı gece kullanımlarında yüksek kontrastlı bir deneyim sağlıyor.",
-    image: "/Takvapp_Web/images/mobile/cami-pro-03.png",
+    image: "/images/mobile/cami-pro-03.png",
   },
   {
     title: "Ana Sayfa Panelleri",
     description:
       "Namaz vakitleri, Imam AI kısayolu ve hikâye halkaları ile günlük ibadet akışını tek yerde topluyor.",
-    image: "/Takvapp_Web/images/mobile/cami-pro-04.png",
+    image: "/images/mobile/cami-pro-04.png",
   },
   {
     title: "Kıble Pusulası",
     description:
       "Minimal pusula animasyonu Kâbe yönünü hassas şekilde göstererek ibadet hazırlığını kolaylaştırıyor.",
-    image: "/Takvapp_Web/images/mobile/cami-pro-05.png",
+    image: "/images/mobile/cami-pro-05.png",
   },
 ] as const;
 
