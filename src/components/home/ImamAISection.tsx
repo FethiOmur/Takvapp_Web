@@ -2,9 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Sparkles } from "lucide-react";
 
 const suggestedQuestions = [
   "Namaz nasıl kılınır?",

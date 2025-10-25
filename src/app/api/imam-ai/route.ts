@@ -6,9 +6,7 @@ export async function POST(request: Request) {
     const body: ChatRequest = await request.json();
     const { message, history } = body;
 
-    // TODO: Implement the actual call to the Imam AI model
-    console.log('Received message:', message);
-    console.log('Chat history:', history);
+
 
     const reply = `This is a real response for the message: "${message}"`;
     const sources = ["Quran 3:139", "Sahih Muslim 2999"];
