@@ -5,14 +5,23 @@ const outDir = path.join(__dirname, '../out');
 const basePath = '/Takvapp_Web';
 
 function fixImagePaths(filePath) {
+
   let content = fs.readFileSync(filePath, 'utf8');
+
   
+
   const newContent = content.replace(/"\/images\//g, `"${basePath}/images/`);
 
+
+
   if (content !== newContent) {
+
     fs.writeFileSync(filePath, newContent, 'utf8');
+
     console.log(`✓ Fixed: ${path.relative(outDir, filePath)}`);
+
   }
+
 }
 
 function walkDir(dir) {
