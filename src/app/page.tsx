@@ -21,33 +21,11 @@ export default function HomePage() {
     time: "12:30",
   });
 
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
-    if (prayerData) {
-      const timings = prayerData;
-      const now = new Date();
-      const currentHour = now.getHours();
-      const currentMinute = now.getMinutes();
-
-      const prayers = [
-        { name: "İmsak", time: timings.Fajr, key: "Fajr" },
-        { name: "Öğle", time: timings.Dhuhr, key: "Dhuhr" },
-        { name: "İkindi", time: timings.Asr, key: "Asr" },
-        { name: "Akşam", time: timings.Maghrib, key: "Maghrib" },
-        { name: "Yatsı", time: timings.Isha, key: "Isha" },
-      ];
-
-      for (const prayer of prayers) {
-        const [hour, minute] = prayer.time.split(":").map(Number);
-        if (
-          hour > currentHour ||
-          (hour === currentHour && minute > currentMinute)
-        ) {
-          setNextPrayer({ name: prayer.name, time: prayer.time });
-          break;
-        }
-      }
-    }
-  }, [prayerData]);
+    setIsMounted(true);
+  }, []);
 
   const mockPrayerTimes: PrayerTimes = prayerData || {
     Fajr: "05:30",
@@ -62,26 +40,30 @@ export default function HomePage() {
       <Header />
 
       <main>
-        <HeroSection
-          city={location?.city ?? "Istanbul"}
-          country={location?.country ?? "Turkey"}
-          nextPrayer={nextPrayer.name}
-          nextPrayerTime={nextPrayer.time}
-        />
+        {isMounted && (
+          <>
+            <HeroSection
+              city={location?.city ?? "Istanbul"}
+              country={location?.country ?? "Turkey"}
+              nextPrayer={nextPrayer.name}
+              nextPrayerTime={nextPrayer.time}
+            />
 
-        <div className="relative z-10 mt-16 sm:mt-10">
-          {prayerData && <PrayerTimesCard prayerTimes={mockPrayerTimes} currentPrayer="Dhuhr" />}
-        </div>
+            <div className="relative z-10 mt-16 sm:mt-10">
+              {prayerData && <PrayerTimesCard prayerTimes={mockPrayerTimes} currentPrayer="Dhuhr" />}
+            </div>
 
-        <div className="relative z-0 mt-10">
-          <AppPreviewSection />
-        </div>
+            <div className="relative z-0 mt-10">
+              <AppPreviewSection />
+            </div>
 
-        <ImamAISection />
+            <ImamAISection />
 
-        <FeaturesGrid />
+            <FeaturesGrid />
 
-        <TestimonialsMarquee />
+            <TestimonialsMarquee />
+          </>
+        )}
       </main>
 
       <Footer />
