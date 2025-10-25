@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 const tabs = [
@@ -88,12 +87,10 @@ export function AppPreviewSection({ className }: { className?: string }) {
               className="flex gap-4"
             >
               <div className="relative h-16 w-12 flex-shrink-0 overflow-hidden rounded-xl border border-black/5 bg-white/80 dark:border-white/10 dark:bg-white/5">
-                <Image
-                  src={screen.image}
+                <img
+                  src={`/Takvapp_Web${screen.image}`}
                   alt={screen.title}
-                  fill
-                  className="object-cover"
-                  sizes="48px"
+                  className="object-cover w-full h-full"
                 />
               </div>
               <div>
