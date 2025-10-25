@@ -70,7 +70,7 @@ export default function HomePage() {
         />
 
         <div className="relative z-10 mt-16 sm:mt-10">
-          <PrayerTimesCard prayerTimes={mockPrayerTimes} currentPrayer="Dhuhr" />
+          {prayerData && <PrayerTimesCard prayerTimes={mockPrayerTimes} currentPrayer="Dhuhr" />}
         </div>
 
         <div className="relative z-0 mt-10">

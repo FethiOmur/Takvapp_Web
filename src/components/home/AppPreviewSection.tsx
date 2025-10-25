@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn, asset } from "@/lib/utils";
 const tabs = [
   "Ana Sayfa",
   "Namaz Vakitleri",
@@ -87,10 +88,12 @@ export function AppPreviewSection({ className }: { className?: string }) {
               className="flex gap-4"
             >
               <div className="relative h-16 w-12 flex-shrink-0 overflow-hidden rounded-xl border border-black/5 bg-white/80 dark:border-white/10 dark:bg-white/5">
-                <img
-                  src={`/Takvapp_Web${screen.image}`}
+                <Image
+                  src={asset(screen.image)}
                   alt={screen.title}
-                  className="object-cover w-full h-full"
+                  fill
+                  className="object-cover"
+                  sizes="48px"
                 />
               </div>
               <div>

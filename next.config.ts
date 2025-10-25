@@ -22,8 +22,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  basePath: "/Takvapp_Web",
-  assetPrefix: "",
+  basePath: isProd ? "/Takvapp_Web" : "",
+  assetPrefix: isProd ? "/Takvapp_Web" : "",
 };
 
 export default nextConfig;
