@@ -3,10 +3,9 @@
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronRight, Clock4, MapPin, Sunrise } from "lucide-react";
+import { ChevronRight, Clock4, MapPin, Sunrise } from "lucide-react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { TextEffect } from "@/components/ui/text-effect";
-import { Button } from "@/components/ui/button";
 import { AppStoreButton } from "@/components/ui/app-store-button";
 import { PlayStoreButton } from "@/components/ui/play-store-button";
 import CardSwap, { Card } from "@/components/ui/card-swap";
@@ -314,7 +313,6 @@ export function HeroSection({
       const diff = prayerTime.getTime() - now.getTime();
       const h = Math.floor(diff / (1000 * 60 * 60));
       const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
 
       setCountdown(
         [h, m].map((value) => value.toString().padStart(2, "0")).join(":"),

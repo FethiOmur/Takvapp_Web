@@ -13,10 +13,10 @@ import { useState } from "react";
 export default function PrayerTimesPage() {
   const { location: autoLocation, requestLocation } = useLocation();
   const [selectedLocation, setSelectedLocation] =
-    useState<LocationData>(autoLocation);
-  const { data: prayerData } = usePrayerTimes(selectedLocation);
+    useState<LocationData>(autoLocation ?? { city: "Istanbul", country: "Turkey", latitude: 41.0082, longitude: 28.9784 });
+  const { prayerTimes: prayerData } = usePrayerTimes(selectedLocation);
 
-  const mockPrayerTimes: PrayerTimes = prayerData?.data?.timings || {
+  const mockPrayerTimes: PrayerTimes = prayerData || {
     Fajr: "05:30",
     Dhuhr: "12:45",
     Asr: "15:30",
@@ -33,12 +33,12 @@ export default function PrayerTimesPage() {
           <div className="mb-12 text-center">
             <h1 className="text-4xl font-bold md:text-5xl">Namaz Vakitleri</h1>
             <p className="text-xl text-foreground/70">
-              {selectedLocation.city}, {selectedLocation.country}
+              {selectedLocation?.city ?? 'Istanbul'}, {selectedLocation?.country ?? 'Turkey'}
             </p>
           </div>
 
           <LocationSelector
-            currentLocation={selectedLocation}
+            currentLocation={selectedLocation ?? { city: "Istanbul", country: "Turkey", latitude: 41.0082, longitude: 28.9784 }}
             onLocationChange={setSelectedLocation}
             onUseCurrentLocation={requestLocation}
           />
@@ -47,7 +47,7 @@ export default function PrayerTimesPage() {
             <PrayerTimesCard prayerTimes={mockPrayerTimes} />
           </div>
 
-          <MonthlyCalendar location={selectedLocation} />
+          <MonthlyCalendar location={selectedLocation ?? { city: "Istanbul", country: "Turkey", latitude: 41.0082, longitude: 28.9784 }} />
         </div>
       </main>
 

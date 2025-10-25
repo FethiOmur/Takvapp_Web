@@ -15,15 +15,15 @@ import { PrayerTimes } from "@/types/prayer";
 
 export default function HomePage() {
   const { location } = useLocation();
-  const { data: prayerData, isLoading } = usePrayerTimes(location);
+  const { prayerTimes: prayerData } = usePrayerTimes(location);
   const [nextPrayer, setNextPrayer] = useState<{ name: string; time: string }>({
     name: "Öğle",
     time: "12:30",
   });
 
   useEffect(() => {
-    if (prayerData?.data?.timings) {
-      const timings = prayerData.data.timings;
+    if (prayerData) {
+      const timings = prayerData;
       const now = new Date();
       const currentHour = now.getHours();
       const currentMinute = now.getMinutes();
@@ -49,7 +49,7 @@ export default function HomePage() {
     }
   }, [prayerData]);
 
-  const mockPrayerTimes: PrayerTimes = prayerData?.data?.timings || {
+  const mockPrayerTimes: PrayerTimes = prayerData || {
     Fajr: "05:30",
     Dhuhr: "12:45",
     Asr: "15:30",
@@ -63,8 +63,8 @@ export default function HomePage() {
 
       <main>
         <HeroSection
-          city={location.city}
-          country={location.country}
+          city={location?.city ?? "Istanbul"}
+          country={location?.country ?? "Turkey"}
           nextPrayer={nextPrayer.name}
           nextPrayerTime={nextPrayer.time}
         />

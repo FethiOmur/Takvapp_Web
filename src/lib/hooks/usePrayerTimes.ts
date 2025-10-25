@@ -30,7 +30,7 @@ export function usePrayerTimes(location: LocationData | null) {
     };
 
     fetchPrayerTimes();
-  }, [location?.city, location?.country]);
+  }, [location]);
 
   return { prayerTimes, loading, error };
 }

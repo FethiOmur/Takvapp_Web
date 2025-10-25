@@ -21,6 +21,24 @@ interface DayPrayerTimes {
   isha: string;
 }
 
+interface AladhanDay {
+  date: {
+    gregorian: {
+      day: string;
+      weekday: {
+        en: string;
+      };
+    };
+  };
+  timings: {
+    Fajr: string;
+    Dhuhr: string;
+    Asr: string;
+    Maghrib: string;
+    Isha: string;
+  };
+}
+
 export function MonthlyCalendar({ location }: MonthlyCalendarProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -44,7 +62,7 @@ export function MonthlyCalendar({ location }: MonthlyCalendarProps) {
           currentYear
         );
 
-        const formattedData: DayPrayerTimes[] = response.data.map((day: any) => ({
+        const formattedData: DayPrayerTimes[] = response.data.map((day: AladhanDay) => ({
           date: day.date.gregorian.day,
           day: day.date.gregorian.weekday.en.substring(0, 3),
           fajr: day.timings.Fajr.substring(0, 5),

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "@/lib/hooks/useLocation";
 
 export default function QiblaPage() {
-  const { coordinates, loading, error, requestLocation } = useLocation();
+  const { location: coordinates, loading, error, requestLocation } = useLocation();
 
   return (
     <div className="min-h-screen">
@@ -55,8 +55,8 @@ export default function QiblaPage() {
                 />
                 <div className="text-center mt-20 pt-8 border-t border-border">
                   <p className="text-sm text-foreground/60">
-                    Konumunuz: {coordinates.latitude.toFixed(4)},{" "}
-                    {coordinates.longitude.toFixed(4)}
+                    Konumunuz: {coordinates.latitude?.toFixed(4)},{" "}
+                    {coordinates.longitude?.toFixed(4)}
                   </p>
                 </div>
               </div>

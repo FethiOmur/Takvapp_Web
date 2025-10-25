@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useMemo, useCallback, Children, createRef, forwardRef } from "react";
+import React, { useRef, useEffect, useMemo, Children, createRef, forwardRef } from "react";
 import gsap from "gsap";
 
 export interface CardProps {
@@ -216,19 +216,22 @@ export default function CardSwap({
   const wrappedChildren = childArray.map((child, index) => {
     if (!React.isValidElement(child)) return child;
 
-    return React.cloneElement(child, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const props: any = {
       key: index,
       ref: cardRefs[index],
       style: {
         width,
         height,
-        ...((child.props as any).style || {}),
+        ...((child.props as { style?: React.CSSProperties }).style || {}),
       },
       onClick: (e: React.MouseEvent) => {
-        (child.props as any).onClick?.(e);
+        (child.props as { onClick?: (e: React.MouseEvent) => void }).onClick?.(e);
         onCardClick?.(index);
       },
-    } as any);
+    };
+
+    return React.cloneElement(child, props);
   });
 
   return (
