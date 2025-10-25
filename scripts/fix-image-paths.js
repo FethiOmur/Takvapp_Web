@@ -6,24 +6,11 @@ const basePath = '/Takvapp_Web';
 
 function fixImagePaths(filePath) {
   let content = fs.readFileSync(filePath, 'utf8');
-  let modified = false;
+  
+  const newContent = content.replace(/"\/images\//g, `"${basePath}/images/`);
 
-  // Fix preload links for images
-  const preloadRegex = /<link\s+rel="preload"\s+as="image"\s+href="(\/images\/[^"]+)"/g;
-  content = content.replace(preloadRegex, (match, imagePath) => {
-    modified = true;
-    return match.replace(imagePath, basePath + imagePath);
-  });
-
-  // Fix img src attributes
-  const imgSrcRegex = /src="(\/images\/[^"]+)"/g;
-  content = content.replace(imgSrcRegex, (match, imagePath) => {
-    modified = true;
-    return match.replace(imagePath, basePath + imagePath);
-  });
-
-  if (modified) {
-    fs.writeFileSync(filePath, content, 'utf8');
+  if (content !== newContent) {
+    fs.writeFileSync(filePath, newContent, 'utf8');
     console.log(`✓ Fixed: ${path.relative(outDir, filePath)}`);
   }
 }
