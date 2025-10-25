@@ -4,7 +4,7 @@ import type { ChatRequest, ChatResponse } from '@/types/chat';
 export async function POST(request: Request) {
   try {
     const body: ChatRequest = await request.json();
-    const { message, history } = body;
+    const { message } = body;
 
 
 
